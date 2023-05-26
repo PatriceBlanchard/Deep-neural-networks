@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} À propos {% endblock %}
+
+{% block content %}
+<div class="col-12">
+    <br>
+    <br>
+    <h3>Patrice Blanchard</h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-9">
+            <p>
+                Étudiant à l'institut d'enseignement à distance de l'université Paris 8.
+                <br>
+                <br>
+                Licence Informatique / Psychologie.
+                <br>
+                <br>
+                La création de ce site web dédié au <span class="fst-italic">deep Learning</span> s'insère dans le cadre
+                d'un projet de licence 2.
+            </p>
+            <br>
+            <p>
+                Les dernières avancées technologiques en lien avec le <span class="fst-italic">deep learning</span> ont
+                connu une évolution sans précédent ces dernières années. En effet, de nouvelles combinaisons et/ou
+                optimisations d'architectures sont proposées lors de défis réunissant de nombreuses équipes de
+                recherches, attendues par exemple lors la compétition ImageNet de Reconnaissance Visuelle à Grande
+                Échelle organisée tous les ans. De toute évidence, ce site web n'en est qu'à ses débuts, je prévois à
+                l'avenir d'agrémenter son contenu d'explications plus détaillées ainsi que de projets de L3 au fil de
+                mon apprentissage. Voici les projets qui seront proposés au mois d'avril 2022 :
+            <ul>
+                <li>Détection de scènes, d'objets dans une vidéo : CNN + GRU;</li>
+                <li>Classification de sons - LSTM ou GRU;</li>
+                <li>Web scraping associé à MongoDB  et un réseau de neurones réccurents : LSTM ou GRU.</li>
+            </ul>
+            </p>
+        </div>
+        <div class="col-md-3">
+            <img src="{% static 'img/a_propos/moi.jpg' %}" class="rounded mx-auto d-block" width="60%">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+

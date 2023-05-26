@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+
+<div class="col-md-10">
+</br>
+    {% for post in posts %}
+    <div class="mb-4">
+        <h5><a href="{% url 'post-detail' post.pk %}" class="text-reset"> {{ post.title }}</a></h5>
+        <small>Posté le {{ post.created_at }}</small>
+        <hr>
+        <p class="text-justify">
+            {{ post.text|safe|truncatewords:50 }}
+            <a href="{% url 'post-detail' post.pk %}" class="text-reset">[Lire plus]</a>
+        </p>
+        <a href="{% url 'post-list' post.category.slug %}" class="badge bg-secondary">
+            {{ post.category.name|capfirst }}
+        </a>
+    </div>
+
+    {% empty %}
+    <!-- Gestion d'une page associé à une catégorie inexistante -->
+    <div class="text-center">
+        <p class="display-1">:-(</p>
+        <h3 class="mt-4">
+            Sorry, no posts for the category <span class="badge bg-secondary"> {{ category.name }} </span>
+        </h3>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="col-md-2">
+    </br>
+    <h5>Categories</h5>
+    <ul class="list-unstyled">
+        {% for cat in categories %}
+        <li>
+            <a href="{% url 'post-list' cat.slug %}"
+               class="badge bg-secondary">
+                {{ cat.name|capfirst }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock content %}

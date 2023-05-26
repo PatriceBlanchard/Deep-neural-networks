@@ -1,0 +1,398 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Application sur des données de type image {% endblock %}
+
+{% block content %}
+<div class="col-12">
+    <br>
+    <br>
+    <p>
+        Dans cette partie, je vais présenté succinctement six réseaux de neurones, figurant parmi ceux dont les
+        technologies ont le plus marquées les esprits lors de la dernière décennie. En fin de page, vous avez également
+        la possibilité de tester une classification d'images cérébrales présentant une tumeur ou non :
+    </p>
+    <br>
+    <p class="text-center">
+        Pour réaliser ou connaître le résultat de cette inférence, suivez ce <a href="#result">lien</a>
+    </p>
+    <br>
+    <p>
+        Les différents réseaux présentés ci-après ont été mis en lumière au fil des années lors des compétitions <span
+            class="fst-italic">ImageNet Large Scale Visual Recognition Challenge</span>. Cette manifestation se traduit
+        en français par le «Défi de la reconnaissance visuelle à grande échelle
+        d'ImageNet». Il s'agit d'une compétition annuelle réunissant des équipes de recherches, déployant toute leur
+        ingéniosité
+        afin d'atteindre les taux d’erreurs de prédiction les plus faibles sur des tâches de vision par
+        ordinateur, telles que la détection et la classification d’objets et de scènes dans les images naturelles.
+    </p>
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        VGG :
+    </p>
+    <p>
+        Ce réseau a été inventé par les informaticiens Karen Simoyan et Andrew Zisserman de l’université de Stanford en
+        2014<sup id="note1"><a href="#footnote1" title="Note n°1">1</a></sup>. Le réseau de neurones VGG19 de l'anglais
+        <span class="fst-italic">visual geometry group</span>, traduit en français par «groupe de géométrie visuelle»,
+        est un CNN présentant une architecture séquentielle dotée de 19 couches de poids et d’une taille de filtre en
+        3x3. VGG présente de nombreux avantages comme son efficacité pour la reconnaissance d’objets, d’autant plus
+        qu'une augmentation raisonnable de sa profondeur améliore la précision du modèle. Néanmoins, il n'est pas
+        conseillé pour la reconnaissance de scènes où d’autres réseaux sont à privilégier comme par exemple
+        Places205-VGG.
+    </p>
+    <p class="text-center text-decoration-underline">
+        Une représentation de l'architecture VGG19 :
+    </p>
+    <img src="{% static 'img/application_image/vgg19.svg' %}" class="rounded mx-auto d-block" width="15%">
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        Resnet-50 :
+    </p>
+    <p>
+        Resnet, de l'anglais <span class="fst-italic">residual neural network</span>, signifiant en français «réseau de
+        neurones résiduel» a été inventé en 2015 par les informaticiens Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian
+        Sun<sup id="note2"><a href="#footnote2" title="Note n°2">2</a></sup>. Dans cet article, il est question
+        d'ajouter au classique réseau de neurones linéaire comme VGG, des sauts à double ou triple couches. Cette
+        technique offre au réseau la capacité d’ignorer certaines couches. Ce type d’architecture se justifie
+        principalement lorsque l’on souhaite développer des réseaux très profonds. Effectivement, une forte augmentation
+        de la profondeur entraîne une dégradation du gradient au fur et à mesure de sa propagation, altérant ainsi la
+        précision du modèle. La finalité de l’usage des sauts dans un réseau très profond est donc la réduction de la
+        fuite de gradients ainsi que la saturation de la précision. Resnet pour son efficacité est un des réseaux le
+        plus courant utilisé en vision pour ordinateur autant en classification, détection d’objects qu’en analyse de
+        scènes. Tout comme VGG, le nombre ajouté à côté de Resnet désigne le nombre de couches. Il existe des versions
+        disposant de 18, 34, 50, 101, 110, 152, 164, 1202 couches.
+    </p>
+    <p class="text-center text-decoration-underline">
+        Une représentation de l'architecture Resnet-50 :
+    </p>
+    <img src="{% static 'img/application_image/resnet.svg' %}" class="rounded mx-auto d-block" width="20%">
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        Inception-Resnet-v2 :
+    </p>
+    <p>
+        Le réseau de neurones Inception Resnet V2<sup id="note3"><a href="#footnote3" title="Note n°3">3</a></sup> a
+        été développé en 2016 par Christian Szegedy, Sergey Ioffe, Vincent Vanhoucke, et Alex Alemi, tous chercheurs en
+        intelligence artificielle chez Google. Ce réseau de neurones artificiels s’appuie sur la combinaison des deux
+        technologies révélées dans sa désignation. Les réseaux Inception et Resnet signèrent pour chacune de ces
+        technologies, une avancée considérable dans le domaine de la reconnaissance d’image. Effectivement, l’opération
+        fondamentale de convolution requiert de configurer préalablement la taille du noyau qui sera appliquée sur les
+        images proposées en entrée d’une couche. Or, certaines tailles peuvent s’avérer inadaptées pour détecter
+        correctement les caractéristiques désirées. Il convient d’utiliser parfois un grand noyau tout comme un petit
+        noyau dans certains cas. Un exemple soulignant cette problématique pourrait être le souhait de détecter un
+        animal occupant une infime partie d’une image, puis de proposer une autre image en entrée où cet animal en
+        occupe la majeure partie. La solution consiste à créer une module inception où des convolutions de tailles de
+        filtres différentes (1x1, 3x3, 5x5, 7x1, 1x7, 1x3, 3x1) sont étendues autrement dit déployées en largeur. Par
+        conséquent, cette technologie ne privilégie plus, comme à l’accoutumé, l’ajout d’une nouvelle convolution en
+        profondeur. En outre, des connexions résiduelles spécifiques au réseau Resnet, sont également ajoutées dans
+        chaque module inception pour ainsi réduire la dégradation du gradient de même que le temps de formation. Au
+        final, les convolutions de tailles différentes associées aux connexions résiduelles sont ensuite concaténées
+        avant d’être présenter en entrée d’un nouveau module.
+    </p>
+    <p class="text-center text-decoration-underline">
+        Une représentation de l'architecture Inception-Resnet-V2 :
+    </p>
+    <img src="{% static 'img/application_image/inception-resnet-v2.svg' %}" class="rounded mx-auto d-block"
+         width="100%">
+
+    <p class="text-center fw-bold text-decoration-underline">
+        NASNet :
+    </p>
+    <p>
+        Le réseau NASNet<sup id="note4"><a href="#footnote4" title="Note n°4">4</a></sup> a été implémenté en 2018 par
+        Barret Zoph, Vijay Vasudevan, Jonathon Shlens, Quoc V. Le de Google Brain, un projet de recherche en <span
+            class="fst-italic">deep learning</span>. Il s’agit d’un modèle qui à partir d’un jeu de données recherche
+        une architecture réseau appropriée. Néanmoins, cette approche est relativement couteuse en temps de calcul
+        suivant la taille du jeu de données. Il convient alors de débuter une recherche sur un ensemble de jeu de
+        données restreint, pour ensuite le transférer vers un ensemble de données plus conséquent. Dans un premier
+        temps, l’architecture d’une couche convolutive est recherchée sur CIFAR-10, correspondant à petit ensemble de
+        données comprenant 60 000 images, 32x32 ombrées et égalitairement réparties dans 10 classes. Dans un second
+        temps, plusieurs copies de cette couche seront ensuite empilées et appliquées à un ensemble plus grand, souvent
+        un sous-ensemble d’ImageNet intégrant 14 197 122 d’images variant en dimensions et en résolution et intégrées
+        dans 20 000 catégories.
+    </p>
+    <p class="text-center text-decoration-underline">
+        Les représentations des architectures de recherche basées sur CIFAR-10 et ImageNet :
+    </p>
+
+    <img src="{% static 'img/application_image/NASNet1.svg' %}" class="rounded mx-auto d-block" width="30%">
+
+    <p>
+        Les cellules normales, en anglais <span class="fst-italic">normal cell</span>, sont des cellules convolutives
+        renvoyant une carte de caractéristiques de même dimension. Les cellules de réduction, en anglais <span
+            class="fst-italic">reduction cell</span> sont également des cellules convolutives où les dimensions de la
+        carte de caractéristiques sont réduites d’un facteur de 2.
+    </p>
+
+    <p>
+        Ces deux types de cellules sont recherchées par un contrôleur de type réseau neuronal récurrent prédisant le
+        reste de la structure de la cellule convolutive en déterminant le type d’opérations à ajouter :
+    </p>
+    <p>
+    <ul>
+        <li>Identity - Identité;</li>
+        <li>1x7 then 7x1 convolution - Convolution 1x7 puis 7x1;</li>
+        <li>3x3 average pooling - Mise en commun 3x3 via une moyenne;</li>
+        <li>5x5 max pooling - Mise en commun 5x5 par le maximum;</li>
+        <li>1x1 convolution - Convolution 1x1;</li>
+        <li>3x3 depth wise-separable cons - Constructeur 3x3 séparable en profondeur;</li>
+        <li>7x7 depth wise-separable cons - Constructeur 7x7 séparable en profondeur;</li>
+        <li>1x3 then 3x1 convolution - Convolution 1x3 puis 3x1;</li>
+        <li>3x3 dilated convolution - Convolution 3x3 dilaté.</li>
+    </ul>
+    </p>
+    <p class="text-center text-decoration-underline">
+        La représentation du controleur :
+    </p>
+    <img src="{% static 'img/application_image/NASNet2.svg' %}" class="rounded mx-auto d-block" width="80%">
+    <br>
+    <p>
+        Le contrôleur suit les différentes étapes subséquentes lors de la construction récursive d’un bloc de cellule
+        convolutive :
+    </p>
+    <p>
+    <ol>
+        <li>Sélectionnez un état caché parmi hi, hi-1 ou parmi l’ensemble des états cachés crées dans les blocs
+            précédents;
+        </li>
+
+        <li>Sélectionnez un deuxième état masqué parmi les mêmes options qu’à l’étape 1;</li>
+
+        <li>Sélectionnez une opération à appliquer à l’état masqué sélectionné à l’étape 1;</li>
+
+        <li>Sélectionnez une opération à appliquer à l’état masqué sélectionné à l’étape 2;</li>
+
+        <li>Sélectionnez une méthode pour combiner les sorties des étapes 3 et 4 afin de créer un nouvel état
+            caché.
+        </li>
+    </ol>
+    </p>
+    <p>
+        Le résultat de cette recherche donne plusieurs cellules candidates comme l'architecture NASNet présentée
+        ci-dessous :
+    </p>
+    <img src="{% static 'img/application_image/NASNet3.svg' %}" class="rounded mx-auto d-block" width="90%">
+    <br>
+    <p>
+        En conclusion, à partir du jeu de données CIFAR 10 et ImageNet, NASNet essaie de trouver les meilleures
+        combinaisons d’un ensemble opérations via un contrôleur RNN pour ainsi former des cellules convolutives et in
+        fine retenir la plus efficace. Ce procédé d’automatisation de la création de modèles d’apprentissage devrait
+        jouer à l'avenir un rôle de plus en plus important, en assistant les scientifiques des données dans la mise en
+        œuvre de leurs projets.
+    </p>
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        Efficient :
+    </p>
+    <p>
+        Les réseaux de la famille de réseaux de neurones EfficientNet V1<sup id="note5"><a href="#footnote5"
+                                                                                           title="Note n°5">5</a></sup>
+        et V2<sup id="note6"><a href="#footnote6" title="Note n°6">6</a></sup> sont également élaborés au moyen d’une
+        technologie de recherche d’architecture neuronale. En plus de cette technologie, les réseaux EfficientNet
+        présentent une optimisation de l’équilibre de la profondeur, la largeur et la résolution du réseau, garantissant
+        ainsi de meilleures performances. En outre, cette rationalisation réduit sensiblement le nombre de paramètres,
+        rendant de ce fait le modèle plus efficace comme le révèle cette infographie :
+    </p>
+    <img src="{% static 'img/application_image/Efficientv7-1.svg' %}" class="rounded mx-auto d-block" width="100%">
+
+    <p class="text-decoration-underline">
+        Légende :
+    </p>
+    <p>
+        (a) est un exemple de réseau de référence. (b) - (d) sont des mises à l’échelle conventionnelles qui
+        n’augmentent qu’une seule dimension de la largeur, de la profondeur ou de la résolution du réseau. (e) est la
+        méthode de mise à l’échelle composée proposée via Efficient qui met uniformément à l’échelle les trois
+        dimensions avec un rapport fixe.
+    </p>
+    <hr>
+    <br>
+    <p>
+        La version 1 d'EfficientNet utilise des blocs résiduels inversés, appelé bloc <span
+            class="fst-italic">MBConv</span>. La version 2 de 2021 utilise également la même combinaison de recherche et
+        de mise à l’échelle de l’architecture que la version 1. En outre, EfficientNet V2 est remarquable par son
+        utilisation de noyau en 3x3 plus petits que la V1 en compensant par l’ajout d’un plus grand nombre de couches.
+        Les blocs résiduels inversé MBConv sont également présent dans cette version. Ils sont juste remplacés dans les
+        premières couches par des blocs résiduels fusionnés en anglais <span class="fst-italic">Fused MBConv</span> dans
+        les premières couches.
+    <p class="text-center text-decoration-underline">
+        La représentation d'un bloc MBConv et celle d'un Fused MBConv :
+    </p>
+
+    </p>
+    <img src="{% static 'img/application_image/Conv.svg' %}" class="rounded mx-auto d-block" width="30%">
+    <p>
+    <p class="text-decoration-underline">
+        Légende :
+    </p>
+    <p>
+    <ul>
+        <li>
+            SE<sup id="note7"><a href="#footnote7" title="Note n°7">7</a></sup> : Squeeze-and-Excitation en français "la
+            compression et l'excitation" attribuent des poids aux noyaux, de sorte qu'un noyau peut avoir une plus
+            grande influence qu'un autre sur l'apparence de la carte d'activation suivante.
+        </li>
+        <li>
+            H : <span class="fst-italic">Height</span>, la hauteur;
+        </li>
+        <li>
+            W: <span class="fst-italic">Weight</span>, la largeur;
+        </li>
+        <li>
+            C : <span class="fst-italic">Channel</span>, le canal;
+        </li>
+        <li>
+            Conv : une couche de convolution;
+        </li>
+        <li>
+            <span class="fst-italic">Depthwise Conv</span> : en français la convolution en profondeur, il s'agit d'un
+            type de convolution appliquant un seul filtre convolutif pour chaque canal d'entrée.
+        </li>
+    </ul>
+    <hr>
+    <br>
+    <p>
+        En conclusion, la dernière itération de la version V1 dénommée EfficientNet B7 est 8,4 fois plus petit et 6,1
+        fois plus rapide en inférence que le meilleur ConvNet existant en 2021. En outre, l’architecture de la version
+        V2 offre
+        une vitesse d’entraînement plus rapide en réduisant encore plus le nombre de paramètres par rapport à la version
+        1. Ainsi, l’architecture EfficientNetV2 s’entraîne jusqu’à 11 fois plus rapidement tout en étant 6,8 fois plus
+        réduite par rapport à la V1.
+    </p>
+    <p class="text-center fw-bold text-decoration-underline">
+        CoAtNet :
+    </p>
+    <p>
+        L'architecture la plus récente a atteint une précision de 90,88 % dans le top 1 sur ImageNet en 2021<sup
+            id="note10"><a href="#footnote10" title="Note n°10">10</a></sup>. Il s'agit
+        de
+        CoAtNet<sup id="note8"><a href="#footnote8" title="Note n°8">8</a></sup>, une technologie qui combine CNN et
+        transformer<sup id="note9"><a href="#footnote9" title="Note n°9">9</a></sup>. Une technologie qui m'est inconnue
+        pour le moment.
+    </p>
+
+    <br id="result">
+    <br>
+    <h4 class="text-center fw-bold text-decoration-underline">Test de la présence d'une tumeur ou non à
+        l'aide de quatre architectures vu précédemment
+    </h4>
+    <br>
+    <br>
+    <form method="post" enctype="multipart/form-data" action="predictImage">
+        {% csrf_token %}
+
+        <p class="fw-bold text-decoration-underline">Enregistrer le ou les fichiers désirés parmi ceux proposés
+            ci-dessous :
+        </p>
+        <br>
+        <div class="row">
+            <p class="text-center text-decoration-underline">Radiographies du cerveau sans tumeur :
+            </p>
+            <br>
+            <br>
+            <div class="col-md-4">
+                <img src="{% static 'img/image_classification/5_no.jpg' %}" class="rounded mx-auto d-block" width="60%">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'img/image_classification/N15.jpg' %}" class="rounded mx-auto d-block" width="60%">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'img/image_classification/7_no.jpg' %}" class="rounded mx-auto d-block"
+                     height="100%"
+                     width="60%">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <p class="text-center text-decoration-underline">Radiographies du cerveau avec tumeur :
+            </p>
+            <br>
+            <br>
+            <div class="col-md-4">
+                <img src="{% static 'img/image_classification/Y3.jpg' %}" class="rounded mx-auto d-block" width="60%">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'img/image_classification/Y25.jpg' %}" class="rounded mx-auto d-block" height="90%"
+                     width="60% ">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'img/image_classification/Y163.jpg' %}" class="rounded mx-auto d-block" height="90%"
+                     width="60%">
+            </div>
+        </div>
+        <br>
+        <p class="fw-bold text-decoration-underline">
+            Effectuer une prédiction en envoyant un fichier en entrée des réseaux de neurones artificiels :
+        </p>
+        <br>
+        <input name="filePath" type="file">
+        <br>
+        <br>
+        <br>
+        <input type="submit" value="Envoyer">
+        <br>
+        <br>
+        <p class="text-decoration-underline">
+            Les résultats de la classification de l'image sont les suivants :
+        </p>
+        <p>
+        <ul>
+            <li> VGG19 : {{vgg_prediction}}</li>
+            <li> Resnet-50 : {{resnet_prediction}}</li>
+            <li> Inception-Resnet-V2 : {{inception_resnet_v2_prediction}}</li>
+        </ul>
+        </p>
+    </form>
+    <br>
+</div>
+<div id="reference" style = "font-size:14px">
+    <hr>
+    <p class="text-decoration-underline">
+        Références :
+    </p>
+    <p id="footnote1"><a href="#note1"><sup>1</sup></a>
+        K. S. a. A. Zisserman, "Very deep convolutional networks for large-scale image recognition,," in International
+        Conference on Learning Representations (ICLR), San Diego, 2015.
+    </p>
+    <p id="footnote2"><a href="#note2"><sup>2</sup></a>
+        He, Kaiming; Zhang, Xiangyu; Ren, Shaoqing; Sun, Jian (2016). Deep Residual Learning for Image Recognition. 2016
+        IEEE Conference on Computer Vision and Pattern Recognition (CVPR). Las Vegas, NV, USA: IEEE. pp. 770–778.
+    </p>
+    <p id="footnote3"><a href="#note3"><sup>3</sup></a>
+        Szegedy, Christian, et al. "Inception-v4, inception-resnet and the impact of residual connections on learning."
+        Thirty-first AAAI conference on artificial intelligence. 2017.
+    </p>
+    <p id="footnote4"><a href="#note4"><sup>4</sup></a>
+        Zoph, Barret, et al. "Learning transferable architectures for scalable image recognition." Proceedings of the
+        IEEE conference on computer vision and pattern recognition. 2018.
+    </p>
+    <p id="footnote5"><a href="#note5"><sup>5</sup></a>
+        Tan, Mingxing, and Quoc Le. "Efficientnet: Rethinking model scaling for convolutional neural networks."
+        International conference on machine learning. PMLR, 2019.
+    </p>
+    <p id="footnote6"><a href="#note6"><sup>6</sup></a>
+        Tan, Mingxing, and Quoc Le. "Efficientnetv2: Smaller models and faster training." International Conference on
+        Machine Learning. PMLR, 2021.
+    </p>
+    <p id="footnote7"><a href="#note7"><sup>7</sup></a>
+        Hu, Jie, Li Shen, and Gang Sun. "Squeeze-and-excitation networks." Proceedings of the IEEE conference on
+        computer vision and pattern recognition. 2018.
+    </p>
+    <p id="footnote8"><a href="#note8"><sup>8</sup></a>
+        Dai, Zihang, et al. "Coatnet: Marrying convolution and attention for all data sizes." Advances in Neural
+        Information Processing Systems 34 (2021).
+    </p>
+    <p id="footnote9"><a href="#note9"><sup>9</sup></a>
+        Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems 30
+        (2017).
+    </p>
+    <p id="footnote10"><a href="#note10"><sup>10</sup></a>
+        Image Classification on ImageNet,
+        <a href="https://paperswithcode.com/sota/image-classification-on-imagenet">
+            https://paperswithcode.com/sota/image-classification-on-imagenet</a>, 2022.
+    </p>
+</div>
+
+{% endblock content %}
+
+

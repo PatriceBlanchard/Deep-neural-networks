@@ -1,0 +1,60 @@
+ol {
+    list-style-type: none;
+    counter-reset: compteur;
+}
+
+ol li {
+    counter-increment: compteur;
+}
+
+ol li::before {
+    #margin-right: 1rem;
+    content: "Etape " counter(compteur) " - ";
+}
+
+.navbar {
+    margin-bottom: 0;
+    background-color: #2d2d30;
+    font-family: 'Open Sans';
+    font-size: 13px !important;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    #position: relative;
+}
+
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color: #29292c !important;
+}
+
+.open .dropdown-toggle {
+    color: #fff;
+    background-color: #555 !important;
+}
+
+.dropdown-menu {
+    font-family: 'Open Sans';
+    height: 137px !important;
+    #padding: 10px 10px;
+    font-size: 13px !important;
+    #background-color: #2d2d30;
+    #position: absolute;
+    letter-spacing: 2px;
+}
+
+.dropdown-menu li a {
+    color: #2d2d30 !important;
+    width: 100% !important;
+    height: 30px !important;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #F3F3F3 !important;
+}
+
+input[type=text], input[type=email], textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+}

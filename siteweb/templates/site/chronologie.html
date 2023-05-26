@@ -1,0 +1,811 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Chronologie et histoire du machine learning et du deep learning {% endblock %}
+
+{% block content %}
+<div class="col-12">
+    <br>
+    <br>
+    <h4 class="text-center text-decoration-underline">
+        À la découverte de l’histoire de l’intelligence artificielle et des principaux acteurs qui ont conduit à la
+        création du réseau de neurones convolutifs et du réseau de neurones récurrents :
+    </h4>
+    <br>
+    <br>
+    <p class="text-center fw-bold">
+        Du neurone biologique au neurone formel :
+    </p>
+    <br>
+    <p>
+        En 1943, le chercheur en neurologie Warren Sturgis McCulloch et le logicien Walter Harry Pitts spécialisé en
+        neurosciences computationnelles proposent la première représentation artificielle très simplifiée d’un
+        neurone biologique.<sup id="note1"><a href="#footnote1" title="Note n°1">1</a></sup>
+    </p>
+    <br>
+    <a title="Unknown photographer, Public domain, via Wikimedia Commons"
+       href="https://commons.wikimedia.org/wiki/File:1954_Walter_Pitts_and_a_blackboard.jpg">
+        <img class="rounded mx-auto d-block"
+             width="256"
+             alt="1954 Walter Pitts and a blackboard"
+             src="{% static 'img/chronologie/walter_pitts.jpeg' %}"></a>
+    <br>
+    <p class="text-center">
+        Walter Harry Pitts vers 1954
+    </p>
+    <br>
+    <p>
+        Cette reproduction se présente sous la forme d’un neurone formel. En d’autres termes, il s’agit d’une
+        application de la logique mathématique à l'informatique réalisant, à partir d’entrées binaires, un ensemble
+        d'opérations pour engendrer une sortie également binaire.
+    </p>
+    <br>
+    <p class="text-center text-decoration-underline">
+        Une représentation sommaire d'un neurone biologique :
+    </p>
+    <img src="{% static 'img/chronologie/neurone_biologique.svg' %}" class="rounded mx-auto d-block" width="45%">
+    <br>
+    <p class="text-center text-decoration-underline">
+        Le neurone formel de McCulloch-Pitts :
+    </p>
+    <img src="{% static 'img/chronologie/neurone.svg' %}" class="rounded mx-auto d-block" width="45%">
+    <br>
+    <p class="text-center text-decoration-underline">
+        Légende :
+    </p>
+    <br>
+    <p class="text-center">
+        X1, X2 : les entrées - W1, W2 : les poids
+        <br>
+        \(\sum\) : une somme pondérée - \(\theta\) : un seuil
+        <br>
+        H : la fonction d’activation - Y : la sortie
+    </p>
+    <br>
+    <p class="text-center text-decoration-underline">
+        Explications :
+    </p>
+    <br>
+    <p>
+        Chaque entrée est associée à un poids (W1, W2, ...). Après coup, le neurone effectue une somme pondérée (ex : X1
+        x W1 + X2 x W2) qui sera appliquée à une fonction d’activation à seuil dénommée H. Dès lors, si le résultat de
+        la somme pondérée dépasse la valeur du seuil \(\theta\) associé à la fonction, alors la sortie du neurone vaut 1
+        sinon 0.
+    </p>
+    <p>
+        Ainsi, ce neurone est capable de résoudre des calculs logiques élémentaires comme par exemple une classification
+        linéaire, l'implémentation de la fonction OU, ou encore de la fonction ET nécessitant un modèle de type
+        linéaire à l’image du neurone formel. Néanmoins, de nombreuses problématiques de notre univers nécessitent un
+        modèle de type non linéaire pour être résolues.
+    </p>
+    <br>
+    <p class="text-center text-decoration-underline">
+        Un modèle linéaire :
+    </p>
+    <img src="{% static 'img/chronologie/modele.svg' %}" class=" rounded mx-auto d-block" width="25%">
+    <br>
+    <p class="text-center text-decoration-underline">
+        Un modèle non linéaire :
+    </p>
+    <img src="{% static 'img/chronologie/modele_non_lineaire.svg' %}" class="rounded mx-auto d-block" width="25%">
+    <br>
+    <p class="text-center fw-bold">
+        La règle de Donald Hebb ou l’explication du mécanisme de plasticité synaptique :
+    </p>
+    <br>
+    <p>
+        En 1949, le neuropsychologue canadien Donald Hebb présente une théorie sur l’association et la mise en réseau
+        des neurones biologiques lors d’un processus d’apprentissage<sup id="note2"><a href="#footnote2"
+                                                                                       title="Note n°2">2</a></sup> :
+    </p>
+    <p>
+        «Faisons l'hypothèse qu'une activité persistante et répétée d'une activité avec réverbération (ou trace) tend à
+        induire un changement cellulaire persistant qui augmente sa stabilité. Quand un axone d'une cellule A est assez
+        proche pour exciter une cellule B de manière répétée et persistante, une croissance ou des changements
+        métaboliques prennent place dans l'une ou les deux cellules ce qui entraîne une augmentation de l'efficacité de
+        A comme cellule stimulant B.»
+    </p>
+    <p>
+        Cette règle descriptive des interactions neuronales issue de l’ouvrage de Donald Hebb mène à l’explicabilité de
+        la manière dont des neurones s’activent lorsque notre cerveau apprend. Cette règle fait encore figure de
+        référence dans le domaine de l’apprentissage des réseaux de neurones artificiels.
+    </p>
+    <p class="text-center fw-bold">
+        Le perceptron monocouche :
+    </p>
+    <br>
+    <p>
+        Franck Rosenblatt, un psychologue américain de l’université Cornell s’inspira de la théorie de Donald Hebb.
+    </p>
+    <br>
+    <a title="AnonymousUnknown author, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons"
+       href="https://commons.wikimedia.org/wiki/File:Rosenblatt_21.jpg">
+        <img class="rounded mx-auto d-block"
+             width="256"
+             alt="Rosenblatt 21"
+             src="{% static 'img/accueil/franck_rosenblatt.jpeg' %}"></a>
+    <br>
+    <br>
+    <p>
+        Il inventa en 1957 un neurone formel dénommé le perceptron monocouche doté d’un algorithme d’apprentissage.<sup
+            id="note3"><a href="#footnote3"
+                          title="Note n°3">3</a></sup>
+    </p>
+    <p>
+        Il s’agit d’un classifieur linéaire autorisant tout type de nombres en entrée pour in fine les trier et les
+        rendre linéairement séparables par une droite appelée frontière de décision ou hyperplan séparateur.
+    </p>
+    <p>
+        Pour parvenir à un tel résultat, lors d’une phase dite d'entraînement, l’algorithme met à jour les poids
+        synaptiques (W1, W2…). Cette opération est réalisée à l’aide d'une valeur dénommée biais noté b, en effectuant
+        une comparaison entre la sortie souhaitée et la sortie à un instant de l’entraînement. La mise à jour des poids
+        à l’aide du biais est répétée jusqu’à un certain seuil d’erreur ou un nombre de cycle d'entraînement choisi par
+        l’utilisateur. Au fil des cycles d’entraînement, le perceptron converge vers une solution ou échoue si
+        l’ensemble d’apprentissage n’est pas linéairement séparable.
+    </p>
+    <br>
+    <p class="text-center text-decoration-underline">
+        Une représentation du perceptron monocouche :
+    </p>
+    <br>
+    <img src="{% static 'img/chronologie/perceptron.svg' %}" class="rounded mx-auto d-block" width="45%">
+    <br>
+    <p class="text-center">
+        X1, X2 : les entrées - W1, W2 : les poids
+        <br>
+        \(\sum\) : une somme pondérée - \(\theta\) : un seuil
+        <br>
+        H : la fonction d’activation - Y : la sortie
+        <br>
+    </p>
+    <br>
+    <p>
+        Par rapport au neurone formel de Warren Sturgis McCulloch et Walter Harry Pitts, le perceptron dispose en plus
+        du biais influant sur les poids ainsi que la capacité de traiter des données de tout type comme les nombres
+        réels.
+
+    </p>
+    <p>
+        La compréhension de la mise à jour des poids revient à étudier les calculs subséquents :
+    </p>
+    <br>
+    <p class="text-center text-decoration-underline">
+        La règle de mise à jour des poids du perceptron de Franck Rosenblatt à un instant t + 1:
+    </p>
+    <br>
+    <p class="text-center text-decoration-underline">
+        \(w_{i}(t+1) = w_{i}(t) + \alpha \cdot (y_{attendue} - y_{t})x_{j,i}\)
+    </p>
+    <br>
+    <p>
+    <div class="row">
+        <div class="col-md-2">
+            \(\alpha\)
+            <br>
+            \(w_i(t)\)
+            <br>
+            \(x_{j,i}\)
+        </div>
+        <div class="col-md-10">
+            : le taux d’apprentissage est une constante choisie initialement.
+            <br>
+            : est la valeur \(i^{ieme}\) du vecteur poids;
+            <br>
+            : une valeur de \(i^{ieme}\) caractéristique du \(j^{ieme}\) vecteur d'entrée de formation.
+        </div>
+    </div>
+    </p>
+    <br>
+    <p class="text-center text-decoration-underline">
+        Calcul du biais :
+    </p>
+    <br>
+    <p class="text-center text-decoration-underline">
+        \(Biais = \alpha \times (y_{attendue} - y_{t})\)
+    </p>
+    <br>
+    <div class="row">
+        <div class="col-md-2">
+            \(y_{attendue}\)
+            <br>
+            \(y_{t}\)
+            <br>
+            \((y_{attendue} - y_{t})\)
+        </div>
+        <div class="col-md-10">
+            : la sortie désirée;
+            <br>
+            : la sortie à un instant de l’entraînement;
+            <br>
+            : correspond au calcul de l’erreur.
+        </div>
+    </div>
+    </p>
+    <br>
+    <p class="text-center text-decoration-underline">
+        Calcul de la sortie à un instant de l’entraînement :
+    </p>
+    <br>
+    <p class="text-center text-decoration-underline">
+        \(y_t(n) = f [w(t) \cdot x_j]\)
+    </p>
+    <br>
+    <div class="row">
+        <div class="col-md-2">
+            \(f\)
+            <br>
+            \(y_t(n)\)
+            <br>
+            \(n\)
+            <br>
+            \(x_{j}\)
+            <br>
+            \(w(t)\)
+            <br>
+            \(w(t) \cdot x_j\)
+        </div>
+        <div class="col-md-10">
+            : la fonction d’activation;
+            <br>
+            : la sortie à un instant de l’entraînement;
+            <br>
+            : la donnée d'entraînement, un couple intégrant le vecteur d’entrée et le vecteur de sorties
+            désirées;
+            <br>
+            : un vecteur d’entrée;
+            <br>
+            : les poids au moment \(t\);
+            <br>
+            : le produit scalaire du vecteur d’entrée avec le vecteur de poids.
+        </div>
+    </div>
+
+    <p>
+        <br>
+        <br>
+        Dans sa version moderne, la représentation de la fonction d’activation du perceptron est la suivante :
+    </p>
+
+    <p class="text-center text-decoration-underline">
+        <br>
+        \(f(x) =w \cdot x + b\)
+    </p>
+
+    <p>
+        <br>
+        Si on trace la représentation de la fonction \((x1 \times w1 + x2 \times w2 + …) + b\) de ce modèle
+        linéaire, on obtient une droite de décision dont l’inclinaison dépend de la valeur des poids et dont la
+        position de cette droite par rapport à l’origine peut être modifiée à l'aide du biais \(b\).
+    </p>
+
+    <p class="text-center text-decoration-underline">
+        <br>
+        Un diagramme montrant le résultat d’une classification binaire :
+    </p>
+    <img src="{% static 'img/chronologie/classif.svg' %}" class="rounded mx-auto d-block" width="30%">
+    <p>
+        <br>
+        À l’instar de l’activation d'un neurone biologique, autrement dit l'hyperpolarisation, ou encore à l'inverse sa
+        dépolarisation, le perceptron est dans son ensemble interprété comme une fonction d’activation, produisant
+        par exemple les résultats suivants dans le cadre d’une classification binaire :
+    </p>
+    <p class="text-center">
+        <br>
+        \(f(x) = \begin{cases} 1 & \text{if}~w \cdot x + b > 0\\ 0 & \text{else} \end{cases}\)
+    </p>
+    <br>
+    <p>
+        En définitive, on peut donc remarquer que la mise à jour des poids et du biais sert à modifier spatialement
+        la position de la frontière de décision et permettre ainsi la classification des données proposées en entrée
+        du modèle.
+    </p>
+    <p class="text-center fw-bold">
+        <br>
+        Une période de désintérêt pour les réseaux de neurones :
+    </p>
+    <p>
+        <br>
+        L’impossible séparation linéaire de la fonction OU exclusif (XOR) décrit par les informaticiens américains
+        Marvin Minsky et Seymour Papert en 1969 dans le livre intitulé « Perceptrons: an introduction to
+        computational geometry»<sup id="note4"><a href="#footnote4" title="Note n°4">4</a></sup>, a mis un frein à
+        l’enthousiasme pour les réseaux de neurones artificiels durant quelques années. Effectivement, le perceptron
+        monocouche est un modèle linéaire, or de nombreux phénomènes courants nécessitent un modèle non-linéaire
+        intégrant de nombreuses couches de neurones. À cette précédente problématique s’est rajoutée à l’époque un
+        manque incontestable de volumes de données ainsi qu’une puissance de calcul insuffisante.
+        <br>
+        <br>
+    </p>
+    <a title="Sethwoodworth at English Wikipedia, taken by Bcjordan, CC BY 3.0 &lt;
+            https://creativecommons.org/licenses/by/3.0&gt;, via Wikimedia Commons"
+       href="https://commons.wikimedia.org/wiki/File:Marvin_Minsky_at_OLPC.jpg">
+        <img class="rounded mx-auto d-block"
+             width="256"
+             alt="Marvin Minsky at OLPC"
+             src="{% static 'img/chronologie/marvin_minsky.jpg' %}"></a>
+    <p class="text-center">
+        <br>
+        Marvin Minsky en 2008
+    </p>
+    <p class="text-center fw-bold">
+        <br>
+        Le perceptron multicouche :
+        <br>
+        <br>
+    </p>
+    <p>
+        Cette technologie a été mise en lumière par Paul Werbos
+        <sup id="note5"><a href="#footnote5" title="Note n°5">5</a></sup>, un des pionniers de l’apprentissage
+        automatique. Le perceptron multicouche est agencé d’un volume de données en entrée, et à minima deux couches
+        composées de neurones artificiels. Hormis les nœuds d’entrées, chaque nœud est un neurone d’activation.
+    </p>
+    <p class="text-center text-decoration-underline">
+        Une représentation simpliste d’un perceptron multicouche à deux couches calculant la fonction OU exclusif
+        autrement dit XOR :
+    </p>
+    <br>
+    <br>
+    <img src="{% static 'img/chronologie/xor.png' %}" class="rounded mx-auto d-block" width="35%">
+    <br>
+    <p>
+        <br>
+        Cette architecture répond à un double objectif :
+    <ul>
+        <li>
+            classer des données plus complexes ;
+        </li>
+        <li>
+            répondre à des problématiques nécessitant un modèle de type non-linéaire.
+        </li>
+    </ul>
+    Pour parvenir à un tel résultat, les perceptrons multicouches mettent à jour leurs poids par rétropropagation du
+    gradient de l’erreur pour chaque neurone. Cette technique consiste à calculer le gradient d'une fonction coût
+    calculant la différence entre la sortie prédite et la valeur attendue. En d’autres termes, il s’agit de calculer la
+    variation de la fonction coût par rapport aux paramètres (les poids et le biais) du réseau à chaque couche du modèle
+    en partant de la dernière et en remontant à la première. Intrinsèquement, cet algorithme applique la règle de
+    dérivation en chaîne, autrement dit le théorème de dérivation des fonctions composées sur l’ensemble des couches.
+    </p>
+    <p>
+        L’étude de la variation de la fonction coût sur l’ensemble du réseau aide à comprendre comment adapter les
+        paramètres du réseau de manière à minimiser la somme des erreurs de l’ensemble des neurones de sortie.
+        Ainsi, l’erreur de la sortie observée se rapproche peu à peu de la sortie désirée.
+    </p>
+    <p>
+        En 1974, Paul Werbos publia une thèse où il évoqua la formation de réseaux de neurones artificiels par
+        rétropropagation du gradient de l’erreur dans
+        les réseaux multicouches.
+        <br>
+        <br>
+    </p>
+    <a title="Rolf Kickuth, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons"
+       href="https://commons.wikimedia.org/wiki/File:PaulWerbos-IJCNNseattle1991-07-08.jpg">
+        <img class="rounded mx-auto d-block"
+             width="256"
+             alt="PaulWerbos-IJCNNseattle1991-07-08"
+             src="{% static 'img/chronologie/paul_werbos.jpg' %}"></a>
+    <p class="text-center">
+        <br>
+        Paul Werbos en 1991
+    </p>
+    <p>
+        <br>
+        Par la suite, cette idée a été mis en œuvre par le psychologue David Rumelhart
+        <sup id="note6"><a href="#footnote6" title="Note n°6">6</a></sup>
+        <sup id="note7"><a href="#footnote7" title="Note n°7">7</a></sup> en 1987 appliquant l’algorithme de
+        rétropropagation du gradient aux perceptrons multicouches.
+        <br>
+        <br>
+    </p>
+    <a title="Rolf Kickuth, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons"
+       href="https://commons.wikimedia.org/wiki/File:DavidRumelhart-IJCNNseattle1991-07-08.jpg">
+        <img class="rounded mx-auto d-block"
+             width="256"
+             alt="DavidRumelhart-IJCNNseattle1991-07-08"
+             src="{% static 'img/chronologie/david_rumelhart.jpg' %}"></a>
+    <p class="text-center">
+        <br>
+        David Rumelhart en 1991
+    </p>
+    <p class="text-center text-decoration-underline">
+        <br>
+        Explications :
+        <br>
+        <br>
+    </p>
+    <p>
+        À cette fin, il convient de calculer pour chacun des neurones l’erreur en sortie. Il s’agit de mesurer
+        l’écart
+        entre la sortie attendue et la prédiction grâce à la fonction coût, comme par exemple celle du calcul de
+        l’erreur quadratique moyenne. <sup id="note8"><a href="#footnote8" title="Note n°8">8</a></sup>
+        <br>
+        <br>
+    </p>
+    <p class="text-center text-decoration-underline">
+        Le calcul de l’erreur :
+        <br>
+        <br>
+    </p>
+    <p class="text-center">
+        \(err_j(n) = d_j(n) - y_j(n)\)
+        <br>
+        <br>
+    </p>
+
+    <div class="row">
+        <div class="col-md-1">
+            \(n\)
+            <br>
+            \(err_j(n)\)
+            <br>
+            \(d_j(n)\)
+            <br>
+            \(y_j(n)\)
+        </div>
+        <div class="col-md-11">
+            : la donnée d’entraînement, un couple intégrant le vecteur d’entrée et le vecteur de sorties désirées.
+            <br>
+            : l’erreur à la sortie d’un neurone j et la donnée d’entraînement n.
+            <br>
+            : la sortie désirée.
+            <br>
+            : la sortie observée.
+            <br>
+            <br>
+        </div>
+    </div>
+    <p class="text-center text-decoration-underline">
+        Le calcul de l’erreur quadratique moyenne :
+        <br>
+        <br>
+    </p>
+    <p class="text-center text-decoration-underline">
+        \(E(n) = \frac{1}{D}\sum_{j \in D}(err^2_j(n))\)
+        <br>
+        <br>
+    </p>
+    <div class="row">
+        <div class="col-md-1">
+            \(E(n)\)
+            <br>
+            \(D\)
+        </div>
+        <div class="col-md-11">
+            : La somme des erreurs quadratiques
+            <br>
+            : l’ensemble des neurones de sorties.
+            <br>
+            <br>
+        </div>
+    </div>
+    <p class="text-center text-decoration-underline">
+        La sortie \(y_i(n)\) du neurone \(j\) est définie par :
+        <br>
+        <br>
+    </p>
+    <p class="text-center">
+        \(y_i(n) = f[\vartheta_j(n)] = f[\sum_{i=0}^mw_{ji}(n)y_i(n)]\)
+        <br>
+        <br>
+    </p>
+    <p>
+        Pour simplifier les explications, on suppose que les poids correspondent au biais.
+        <br>
+        <br>
+    </p>
+    <div class="row">
+        <div class="col-md-1">
+            \(f[\cdot]\)
+            <br>
+            \(\vartheta j(n)\)
+            <br>
+            \(w_{ji}(n)\)
+            <br>
+            \(y_i(n)\)
+            <br>
+            \(m\)
+            <br>
+            \(i\)
+            <br>
+            \(j\)
+        </div>
+        <div class="col-md-11">
+            : est la fonction d’activation.
+            <br>
+            : la somme pondérée des entrées du neurone j.
+            <br>
+            : les poids de la connexion entre le neurone i de la couche précédente et le neurone j de la couche
+            courante.
+            <br>
+            : est la sortie du neurone i.
+            <br>
+            : le nombre de neurones.
+            <br>
+            : le neurone de la couche précédente.
+            <br>
+            : le neurone de la couche courante.
+            <br>
+            <br>
+        </div>
+    </div>
+    <p>
+        La minimisation de la somme des erreurs réalisées par les prédictions sur l’ensemble des données
+        d’entrainements est déterminante pour améliorer la précision du modèle. C’est pourquoi le calcul du
+        gradient est nécessaire pour déterminer la variation de la fonction coût en fonction des paramètres
+        du
+        réseau.
+    </p>
+    <p class="text-center text-decoration-underline">
+        Calcul de la dérivée du gradient de l’erreur :
+        <br>
+        <br>
+    </p>
+    <p class="text-center">
+        \(\dfrac{\partial E(n)}{\partial w_{ji}(n)}\)
+        <br>
+        <br>
+    </p>
+    <p>
+        De la règle de chaînage des dérivées partielles , il en découle la forme suivante :
+        <br>
+        <br>
+    </p>
+    <p class="text-center">
+        \(\dfrac{\partial f(y)}{\partial x} = \dfrac{\partial f(y)}{\partial y} \cdot \ \dfrac{\partial
+        y}{\partial x}\)
+        <br>
+        <br>
+    </p>
+    <p>
+        Dans la phase d’entraînement du modèle, on obtient un lien entre la somme des erreurs quadratiques,
+        l’erreur à la sortie d’un neurone, la sortie d’un neurone, la somme pondérée des entrées d’un
+        neurone et le poids entre le neurone précédent et le neurone courant :
+        <br>
+        <br>
+    </p>
+    <p class="text-center">
+        \(\dfrac{\partial E(n)}{\partial w_{ji}(n)} = \dfrac{\partial E(n)}{\partial e_j(n)} \cdot \
+        \dfrac{\partial e_j(n)}{\partial y_i(n)} \cdot \dfrac{\partial y_i(n)}{\partial \vartheta_j(n)}
+        \cdot \dfrac{\partial \vartheta_j(n)}{\partial w_{ji}(n)}\)
+        <br>
+        <br>
+    </p>
+    <div class="row">
+        <div class="col-md-1">
+            \(i\)
+            <br>
+            \(j\)
+            <br>
+            \(E(n)\)
+            <br>
+            \(e_j(n)\)
+            <br>
+            \(y_i(n)\)
+            <br>
+            \(\vartheta j(n)\)
+            <br>
+            \(w_{ji}(n)\)
+        </div>
+        <div class="col-md-11">
+            : le neurone de la couche précédente.
+            <br>
+            : le neurone de la couche courante.
+            <br>
+            : La somme des erreurs quadratique.
+            <br>
+            : l’erreur à la sortie d’un neurone j et la donnée d’entraînement n.
+            <br>
+            : est la sortie du neurone i.
+            <br>
+            : la somme pondérée des entrées du neurone j.
+            <br>
+            : le poids de la connexion entre le neurone i de la couche précédente et le neurone j de la
+            couche courante.
+            <br>
+            <br>
+        </div>
+    </div>
+    <p>
+        Lors de la rétropropagation du gradient de la fonction coût, la variation de poids s’exprime sous
+        cette forme :
+        <br>
+        <br>
+    </p>
+    <p class="text-center">
+        \(\nabla w_{ji}(n) = -\alpha \frac{\partial E(n)}{\partial w_ji(n)}\)
+    </p>
+    <div class="row">
+        <br>
+        <br>
+        <div class="col-md-1">
+            \(\nabla\)
+        </div>
+        <div class="col-md-11">
+            : la notation d’un gradient.
+            <br>
+            <br>
+        </div>
+    </div>
+    <p>
+        La modification du poids \(w_{ji}(n)\) se réalise à l’opposé du gradient \(\frac{\partial
+        E(n)}{\partial w_{ji}(n)}\) de l’erreur car le gradient indique la direction vers le maximum de la
+        fonction coût, or on cherche le minimum.
+        <br>
+        <br>
+    </p>
+    <p class="text-center text-decoration-underline">
+        La règle de calcul de la mise à jour des poids à un instant t :
+        <br>
+        <br>
+    </p>
+    <p class="text-center">
+        \(\theta_{t+1} = \theta_t - \alpha \frac{\partial E(n)}{\partial w_ji(n)}\)
+        <br>
+        <br>
+    </p>
+    <div class="row">
+        <div class="col-md-1">
+            \(\theta\)
+            <br>
+            \(\alpha\)
+        </div>
+        <div class="col-md-11">
+            : les paramètres du réseau sachant qu'un neurone à n entrées à n poids synaptiques et un biais.
+            <br>
+            : le taux d’apprentissage.
+            <br>
+            <br>
+        </div>
+    </div>
+    <p>
+        En conclusion, l’apprentissage doit s’achever lorsque la dérivée de la fonction coût converge
+        vers le minimum global de la fonction coût, puisque cette fonction calculant l’erreur quadratique
+        moyenne est une fonction convexe. Cette optimisation se dénomme la descente de gradient à l’aide
+        du taux d’apprentissage, une sorte de pas qui rythme la vitesse de cette
+        descente jusqu’au minimum global sachant que :
+        <br>
+    <ul>
+        <li>un pas trop petit augmente la durée de l’entraînement et la possibilité que le gradient reste bloqué au
+            niveau d'un minimum local;
+        </li>
+        <li>un pas trop grand, peut rendre impossible la détermination du minimum global dans le sens
+            où le gradient ne fait que rebondir sur la courbe, sans converger vers le minimum global.
+        </li>
+    </ul>
+    </p>
+    <p class="text-center text-decoration-underline">
+        <br>
+        Une représentation d'une fonction coût, la descente de gradient, le minimum local et le minimum global
+    </p>
+    <img src="{% static 'img/chronologie/gradient_.svg' %}" class="rounded mx-auto d-block" width=" 30%">
+    <br>
+    <p class="text-center fw-bold">
+        Le néocognitron :
+    </p>
+    <p>Le néocognitron est un réseau artificiel multicouche inventé par l’informaticien Kunihoko
+        Fukushima<sup id="note9"><a href="#footnote9" title="Note n°9">9</a></sup> en 1980, inspiré par
+        les découvertes du neurobiologiste David Hunter Hubel et le neurophysiologiste Torsten Nils
+        Wiesel. Ces scientifiques sont reconnus pour avoir réaliser des expériences sur des mammifères
+        dans le but d’étudier le traitement sensoriel. En 1959, une de leurs expériences mena à la
+        conclusion suivante : dans le cortex primaire, deux types de neurones appelées cellules simples
+        et cellules complexes sont chargées de traiter les informations visuelles dans des régions
+        restreintes du champ visuel.<sup id="note10"><a href="#footnote10" title="Note n°10">10</a></sup>
+        <sup id="note11"><a href="#footnote11" title="Note n°11">11</a></sup>
+    </p>
+    <p>
+        Les résultats de ces expériences ont abouti à la compréhension du système visuel et de sa
+        manière de construire des représentations complexes d’informations visuelles à partir de
+        caractéristiques de stimulus provenant des cellules simples.
+    </p>
+    <p>
+        L’architecture du néocognitron reproduit les fonctionnalités de ces deux types de cellules. Par
+        conséquent, ce réseau oblige certaines unités en plusieurs positions à avoir les mêmes poids
+        pour que les mêmes caractéristiques soient reconnues à l’aide des cellules simples et complexes.
+    </p>
+    <br>
+    <p class="text-center fw-bold">
+        Le réseau neuronal convolutif :
+    </p>
+    <br>
+    <p>
+        Tout comme le néocognitron, l’assemblage de connexion entre les neurones du réseau s’inspire des
+        cellules simples et complexes présentes dans le cortex visuel primaire de mammifères. Dans cet
+        arrangement complexe de perceptrons monocouches responsable de la détection de caractéristiques,
+        les sous-parties de l’image proposées en entrée dénommées champs récepteurs se chevauchent d’un
+        certain pas et recouvrent l’ensemble de l’image. Yann LeCun proposa en 1989 l’un des tout
+        premiers réseaux de neurones convolutifs baptisé Le-Net
+        <sup id="note12"><a href="#footnote12" title="Note n°12">12</a></sup> jusqu’à la cinquième
+        itération dénommé
+        Le-Net 5 <sup id="note13"><a href="#footnote13" title="Note n°13">13</a></sup>
+        dont l’architecture définit les composants de base d’un CNN. Le seul inconvénient de cette
+        technologie réside dans le fait qu’elle doit réaliser des calculs génériques sur GPU, or les
+        cartes graphiques de l’époque n’étaient pas assez puissantes pour traiter de grands volumes de
+        données d’images. Il a fallu attendre le 30 septembre 2012 pour que les CNN soient reconnus. En
+        effet, Alex Krizhevsky en collaboration avec Ilya Sutskever et Geoffrey Hinton proposa
+        l’architecture de réseau convolutif Alex-net qui remporta la compétition ImageNet Large Scale
+        Visual Recognition Challenge en français "la Compétition ImageNet de Reconnaissance Visuelle à Grande Échelle"
+        avec seulement une erreur minimale de 15.3%
+        <sup id="note14"><a href="#footnote14" title="Note n°14">14</a></sup>.
+        <br>
+        <br>
+    </p>
+
+    <a title="Jérémy Barande/Ecole polytechnique Université Paris-Saclay"
+       href="https://commons.wikimedia.org/wiki/File:Yann_LeCun_-_2018_(cropped).jpg">
+        <img class="rounded mx-auto d-block"
+             width="256"
+             alt="Yann LeCun - 2018 (cropped)"
+             src="{% static 'img/chronologie/yann_lecun.jpeg' %}"></a>
+    <div id=" reference">
+        <p class="text-decoration-underline">
+            <br>
+        <p class="text-center">
+            Yann LeCun en 2018
+        </p>
+        <br>
+        <hr>
+    </div>
+</div>
+<div id="reference" style="font-size:14px">
+    <p class="text-decoration-underline">
+        Références :
+    </p>
+    <p id="footnote1"><a href="#note1"><sup>1</sup></a> McCulloch, Warren; Walter Pitts
+        (1943). «A Logical Calculus of Ideas Immanent in Nervous Activity». Bulletin of Mathematical
+        Biophysics. 5 (4): 115–133.
+    </p>
+    <p id="footnote2"><a href="#note2"><sup>2</sup></a> Hebb, D. O. (1949). «The Organization
+        of Behavior: A Neuropsychological Theory». New York: Wiley and Sons.
+    </p>
+    <p id="footnote3"><a href="#note3"><sup>3</sup></a> Psychological Review Vol. 65, No.
+        6, 1958 «The perceptron: a probabilistic model for information storage and organization in
+        the brain» - F. Rosenblatt.
+    </p>
+    <p id="footnote4"><a href="#note4"><sup>4</sup></a>
+        Minsky, Marvin et Seymour Papert. "Une introduction à la géométrie computationnelle." Cambridge tiass., HIT 479
+        (1969): 480.
+    </p>
+    <p id="footnote5"><a href="#note5"><sup>5</sup></a> Sa thèse est présente dans son
+        livre, Werbos, Paul J. (1994). «The Roots of Backpropagation : From Ordered Derivatives to
+        Neural Networks and Political Forecasting». New York: John Wiley & Sons.
+    </p>
+    <p id="footnote6"><a href="#note6"><sup>6</sup></a> Rumelhart, David E.; Hinton,
+        Geoffrey E.; Williams, Ronald J. (1986-10-09). «Learning representations by back-propagating
+        errors». Nature. 323 (6088): 533–536.
+    </p>
+
+    <p id="footnote7"><a href="#note7"><sup>7</sup></a>
+        Parizeau, Marc. "Le perceptron multicouche et son algorithme de rétropropagation des erreurs." département de
+        génie
+        électrique et de génie informatique, Université de laval (2004).
+    </p>
+
+    <p id="footnote8"><a href="#note8"><sup>8</sup></a> David E. Rumelhart, James L.
+        McClelland and PDP Research Group (1987). «Parallel Distributed Processing: Explorations in
+        the Microstructure of Cognition».
+    </p>
+    <p id="footnote9"><a href="#note9"><sup>9</sup></a> Fukushima, Neocognitron (1980). «A
+        self-organizing neural network model for a mechanism of pattern recognition unaffected by
+        shift in position». Biological Cybernetics. 36 (4): 193–202.
+    </p>
+    <p id="footnote10"><a href="#note10"><sup>10</sup></a> David H. Hubel and Torsten N. Wiesel (2005).
+        «Brain and visual perception: the story of a 25-year collaboration». Oxford University Press
+        US. p. 106.
+    </p>
+    <p id="footnote11"><a href="#note11"><sup>11</sup></a> Hubel, David (1993). «Eye, Brain and
+        Vision». Nature. 362 (6419): 419.
+    </p>
+    <p id="footnote12"><a href="#note12"><sup>12</sup></a> Y. LeCun, B. Boser, J. S. Denker, D.
+        Henderson, R. E. Howard, W. Hubbard and L. D. Jackel: «Backpropagation Applied to
+        Handwritten Zip Code Recognition», Neural Computation, 1(4):541–551, Winter 1989.
+    </p>
+    <p id="footnote13"><a href="#note13"><sup>13</sup></a>
+        LeCun, Yann, et al. «Comparison of learning algorithms for handwritten digit recognition.»
+        International conference on artificial neural networks. Vol. 60. 1995.
+    </p>
+    <p id="footnote14"><a href="#note14"><sup>14</sup></a>
+        Krizhevsky, Alex; Sutskever, Ilya; Hinton, Geoffrey E. (2017-05-24). «ImageNet
+        classification with deep convolutional neural networks» (PDF). Communications of the ACM. 60
+        (6): 84–90.
+    </p>
+</div>
+
+{% endblock content %}

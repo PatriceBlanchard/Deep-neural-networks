@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Accueil {% endblock %}
+
+{% block content %}
+
+<div class="col-12">
+    <br>
+    <br>
+    <h4 class="text-center text-decoration-underline">
+        Bienvenue
+    </h4>
+    <br>
+    <br>
+    <p class="text-start">
+        Ce site web peut être perçu comme un point de départ pour apprendre les rudiments des réseaux de neurones
+        profonds plus communément associés à l'appellation : <span class="fst-italic">deep learning</span>, en français
+        «l'apprentissage profond». Je vais notamment présenté les deux paradigmes les plus populaires de ce
+        domaine, ceux qui ont permis à la sphère du machine learning de réaliser un bond considérable durant les
+        dernières décennies :
+    </p>
+    <br>
+    <p class="text-center">
+        Il s’agit du réseau de neurones convolutifs et du réseau de neurones récurrents.
+    </p>
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        Leurs domaines d'application :
+    </p>
+    <br>
+    <p class="text-start">
+        Un <label class="fw-bold">réseau de neurones à convolutions profondes</label>, de l’anglais DCNN pour
+        <span class="fst-italic">Deep Convolutional Neural Network</span>, souvent raccourci en CNN, est un type de
+        réseaux de neurones artificiels, principalement usité dans le cadre d'opérations mathématiques traduites en
+        langage informatique impliquant des données de type spatial. C'est la raison pour laquelle ce type de réseau est
+        idéalement conçu pour la classification d’images ou encore la détection d'objets, de personnes.
+    </p>
+    <p class="text-start">
+        Un <label class="fw-bold">réseau de neurones récurrents</label>, alias RNN en anglais <span
+            class="fst-italic">Recurrent Neural Network</span> est une autre classe de réseaux de neurones artificiels
+        spécialisée dans le traitement de données temporelles ou séquentielles comme la traduction de langages,
+        l’analyse du discours, des données financières, de la météo et bien plus encore.
+    <p>
+    <p class="text-center fw-bold text-decoration-underline">
+        Définitions :
+    </p>
+    <p>
+        Les différentes technologies citées auparavant font partie des nombreuses terminologies et méthodes de calcul
+        utilisées dans le domaine de l’intelligence artificielle :
+
+    </p>
+    <br>
+    <img src="{% static 'img/accueil/infographie.svg' %}" class=" w-50 rounded mx-auto d-block">
+    <br>
+    <p class="text-center text-decoration-underline">
+        Arrêtons-nous quelques instants sur cette infographie pour ainsi comprendre plus précisément chaque élément de
+        sa composition :
+    </p>
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        L’intelligence artificielle :
+    </p>
+    <br>
+    <p>
+        Un projet d’étude réalisé en été 1956 au College Dartmouth<sup id="note1"><a href="#footnote1" title="Note n°1">1</a></sup>,
+        situé dans le New Hampshire aux États Unis, marqua
+        la naissance de l’appellation « intelligence artificielle ». Ce terme a été initialement proposée par
+        l’informaticien et cogniticien John McCarthy, à l’origine de ce colloque. Ce séminaire de recherche avait pour
+        objectif de réunir onze scientifiques de renom pour ainsi évaluer l’hypothèse que :
+    </p>
+    <p class="text-center">
+        «chaque aspect de l’apprentissage ou toute autre caractéristique de l’intelligence, peut être décrit assez
+        précisément pour être simuler par ordinateur».<sup id="note2"><a href="#footnote2" title="Note n°2">2</a></sup>
+    </p>
+
+
+    <br>
+    <a title="&quot;null0&quot;, CC BY-SA 2.0 &lt;https://creativecommons.org/licenses/by-sa/2.0&gt;, via Wikimedia Commons"
+       href="https://commons.wikimedia.org/wiki/File:John_McCarthy_Stanford.jpg">
+        <img class="rounded mx-auto d-block"
+             width="256"
+             alt="John McCarthy Stanford"
+             src="{% static 'img/accueil/john_mccarthy.jpeg' %}"></a>
+    <br>
+    <p class="text-center ">John McCarthy en 2006, pionnier de l'intelligence artificielle.
+        <br>
+        <br>
+    <p>
+        Dans cette optique, deux approches ont été développées au fil des années :
+    </p>
+    <p>
+        - celle dite déterministe, cette approche consiste en l’implémentation d’une succession d’états connus et
+        maitrisés à l’avance, qui restera inchangée. Ainsi, un algorithme déterministe produira toujours la même sortie
+        pour une même entrée.
+    </p>
+    <p>
+        - celle qualifiée de probabiliste ou encore stochastique réalisant des prédictions en sortie d’une modélisation
+        statistique bayésienne, à partir de données d’observations proposées en entrée. En opposition par rapport à
+        l’approche déterministe, un algorithme probabiliste est non-déterministe, en d’autres termes, pour une même
+        entrée il peut présenter des résultats différents.
+    </p>
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        Le machine learning :
+    </p>
+    <br>
+    <p>
+        Traduit en français par l’apprentissage automatique, le machine learning est un des nombreux champs d’étude de
+        l’intelligence artificielle. Cette technique de programmation repose sur une approche probabilistique
+        solutionnant un problème en apprenant à partir d’un ensemble de données. D'une manière singulière, la
+        modélisation statistique n'a pas besoin d'être explicitement programmée pour apprendre d'un ensemble de données.
+        L'expression machine learning a été utilisée pour la première fois en 1952 par Arthur Samuel, un chercheur en
+        intelligence artificielle américain, pour qualifier son programme capable de jouer aux dames et d’apprendre au
+        fur et à mesures des parties.<sup id="note3"><a href="#footnote3" title="Note n°3">3</a></sup>
+    </p>
+    <br>
+    <a title="Xl2085, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons"
+       href="https://commons.wikimedia.org/wiki/File:This_is_the_photo_of_Arthur_Samuel.jpg">
+        <img class="rounded mx-auto d-block"
+             width="256"
+             alt="This is the photo of Arthur Samuel"
+             src="{% static 'img/accueil/arthur_samuel.jpeg' %}"></a>
+    <br>
+    <p class="text-center"> Arthur Samuel, pionnier américain du jeu sur ordinateur,
+        <br>
+        de l'intelligence artificielle et de l'apprentissage automatique.</p>
+    <br>
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        Les réseaux de neurones artificiels :
+    </p>
+    <br>
+    <p>
+        De l’anglais ANNs signifiant <span class="fst-italic">Artificial neural networks</span>, ces réseaux sont des
+        implémentations originellement inspirées de réseaux de neurones biologiques. À posteriori, les ANNs ont été
+        développés et optimisés à l’aide de méthodes d’apprentissages statistiques. Le premier réseau de neurone
+        artificiel a été inventé en 1958 par le psychologue américain Franck Rosenblatt<sup id="note4"><a
+            href="#footnote4" title="Note n°4">4</a></sup>, souvent considéré de nos jours comme le père du <span
+            class="fst-italic">deep learning</span>.
+
+    </p>
+    <br>
+    <a title="AnonymousUnknown author, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons"
+       href="https://commons.wikimedia.org/wiki/File:Rosenblatt_21.jpg">
+        <img class="rounded mx-auto d-block"
+             width="256"
+             alt="Rosenblatt 21"
+             src="{% static 'img/accueil/franck_rosenblatt.jpeg' %}"></a>
+    <br>
+    <p class="text-center">
+
+        Franck Rosenblatt souvent considéré comme le père du <span class="fst-italic">deep learning</span>.
+    </p>
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        Le deep learning :
+    </p>
+    <br>
+    <p>
+        Ce procédé désigne l’utilisation d'une multitude de couches de neurones dans un réseau de neurones artificiels.
+        Chaque couche de neurones prend en entrée la sortie de la précédente. En outre, cet agencement de couches en
+        ajoutant de la profondeur au réseau, favorise la résolution de problèmes complexes. L’expression <span
+            class="fst-italic">deep Learning</span> a été utilisée pour la première fois en 1986 par Rina Dechter<sup
+            id="note5"><a href="#footnote5" title="Note n°5">5</a></sup>, une éminente professeure d’informatique à
+        l’université de Californie, Irvine.
+    </p>
+    <br>
+    <a title="Zichmich, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons"
+       href="https://commons.wikimedia.org/wiki/File:Rina_Dechter.jpg">
+        <img class="rounded mx-auto d-block"
+             width="256"
+             alt="Rina Dechter"
+             src="{% static 'img/accueil/rina_dechter.jpeg' %}"></a>
+    <br>
+    <p class="text-center">
+        Rina Dechter, la première personne à utiliser l'expression <span class="fst-italic">deep Learning</span>.
+    </p>
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        Le réseau de neurones convolutifs :
+    </p>
+    <br>
+    <p>
+        Il s’agit d’un type de réseaux de neurones artificiels inspiré du cortex visuel d’animaux où le traitement
+        d’images s’effectue en deux étapes. La première consiste à extraire des caractéristiques : un groupe de neurones
+        analyse des petits blocs de pixels appelés champs récepteurs glissant le long de l’image. Cette méthode a pour
+        but de reconnaître dans plusieurs zones de l’image des caractéristiques simples : des traits verticaux,
+        horizontaux, obliques. Le modèle va dans la deuxième étape combiner les différents motifs reconnus précédemment,
+        pour reconnaître des formes plus grandes et plus complexes comme les contours d’un objet,
+        d’une personne.
+    </p>
+    <br>
+    <p class="text-center fw-bold text-decoration-underline">
+        Le réseau de neurones récurrents :
+    </p>
+    <br>
+    <p>
+        Un réseau de neurones récurrents est principalement destiné à la prédiction de séquences dans le domaine du
+        traitement
+        du langage naturel ainsi que la reconnaissance vocale. Ce type de réseau dispose pour chaque neurone, d’une
+        technologie de mémorisation. Les informations enregistrées correspondent aux états ou aux prédictions traitées
+        précédemment, afin d’être utilisées en entrée du réseau. Par conséquent, cet algorithme se renvoie le résultat à
+        lui-même; ce procédé est en effet indispensable pour mémoriser et traiter des séquences de manière récurrente,
+        pour ainsi réaliser des prédictions.
+    </p>
+    <br>
+    <hr>
+</div>
+<div id="reference" style = "font-size:14px">
+    <p class="text-decoration-underline">
+        Références :
+    </p>
+    <p id="footnote1"><a href="#note1"><sup>1</sup></a>
+        More, Trenchard, 1956,Dartmouth Conference on Artificial Intelligence Reports on the 5th and 6th Weeks.,<a
+                href="http://raysolomonoff.com/dartmouth/boxa/dart56more5th6thweeks.pdf">
+            http://raysolomonoff.com/dartmouth/boxa/dart56more5th6thweeks.pdf.</a>
+    </p>
+    <p id="footnote2"><a href="#note2"><sup>2</sup></a>
+        McCarthy, J., Minsky, M., Rochester, N., Shannon, C.E., A Proposal for the Dartmouth Summer Research Project
+        on Artificial Intelligence.,
+        <a href="http://raysolomonoff.com/dartmouth/boxa/dart564props.pdf">
+            http://raysolomonoff.com/dartmouth/boxa/dart564props.pdf, August, 1955.</a>
+    </p>
+    <p id="footnote3"><a href="#note3"><sup>3</sup></a>
+        Arthur, Samuel (1959-03-03). "Some Studies in Machine Learning Using the Game of Checkers". IBM Journal of
+        Research and Development.3 (3): 210–229.
+    </p>
+    <p id="footnote4"><a href="#note4"><sup>4</sup></a>
+        Rosenblatt, Frank. "The perceptron: a probabilistic model for information storage and organization in the
+        brain. "Psychological review 65.6 (1958): 386.
+    </p>
+    <p id="footnote5"><a href="#note5"><sup>5</sup></a>
+        Dechter, Rina. "Learning while searching in constraint-satisfaction problems." (1986): 178-185.
+    </p>
+</div>
+
+{% endblock content %}
+
+
